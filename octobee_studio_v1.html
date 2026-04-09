@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCTOBEE STUDIO — Premium Portraits in Seoul</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#F5F0E8;--warm-white:#FAF8F4;--charcoal:#1C1A17;--mid:#6B6560;--light:#B8B2A8;--accent:#C4956A;--accent-light:#EDD9C4;--border:rgba(28,26,23,0.1)}
+html{scroll-behavior:smooth}
+body{background:var(--warm-white);color:var(--charcoal);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.93);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:64px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;letter-spacing:.12em;text-decoration:none;color:var(--charcoal);text-transform:uppercase}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--charcoal)}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:92vh}
+.hero-text{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 6rem 5rem;border-right:0.5px solid var(--border)}
+.hero-eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;font-weight:400}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,6vw,80px);font-weight:300;line-height:1.05;color:var(--charcoal);margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-body{font-size:15px;color:var(--mid);max-width:380px;line-height:1.8;margin-bottom:2.5rem}
+.btn-primary{display:inline-block;background:var(--charcoal);color:var(--warm-white);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 32px;transition:background .2s}
+.btn-primary:hover{background:var(--accent)}
+.btn-outline{display:inline-block;background:transparent;color:var(--charcoal);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:13px 32px;border:0.5px solid var(--charcoal);transition:background .2s,color .2s}
+.btn-outline:hover{background:var(--charcoal);color:var(--warm-white)}
+.hero-image{background:var(--cream);display:grid;grid-template-rows:1fr 1fr}
+.img-placeholder{background:var(--cream);display:flex;align-items:center;justify-content:center;border-bottom:0.5px solid var(--border);position:relative}
+.img-placeholder:last-child{border-bottom:none}
+.img-placeholder svg{opacity:.22}
+.img-tag{position:absolute;bottom:16px;left:16px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);background:rgba(250,248,244,.85);padding:4px 10px}
+.strip{border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:14px 0;overflow:hidden;background:var(--cream)}
+.strip-inner{display:flex;gap:4rem;animation:scroll-strip 22s linear infinite;white-space:nowrap}
+.strip-item{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);flex-shrink:0}
+.strip-dot{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent);margin:0 2rem;vertical-align:middle}
+@keyframes scroll-strip{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+section{padding:7rem 5rem}
+.section-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-weight:400}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.1;color:var(--charcoal);margin-bottom:1rem}
+.section-body{font-size:15px;color:var(--mid);max-width:500px;line-height:1.8;margin-bottom:3rem}
+#services{background:var(--warm-white);border-top:0.5px solid var(--border)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);border:0.5px solid var(--border);margin-top:3rem}
+.service-card{padding:2.5rem 2rem;border-right:0.5px solid var(--border)}
+.service-card:last-child{border-right:none}
+.service-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--accent-light);line-height:1;margin-bottom:1.5rem}
+.service-name{font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--charcoal);margin-bottom:.75rem}
+.service-desc{font-size:14px;color:var(--mid);line-height:1.7;margin-bottom:1.5rem}
+.service-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--charcoal)}
+.service-price-note{font-size:12px;color:var(--light);margin-left:4px}
+#pricing{background:var(--cream);border-top:0.5px solid var(--border)}
+.pricing-tabs{display:flex;border:0.5px solid var(--border);width:fit-content;margin-bottom:2.5rem}
+.ptab{font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;cursor:pointer;color:var(--mid);border-right:0.5px solid var(--border);background:transparent;border-top:none;border-bottom:none;border-left:none;font-family:'DM Sans',sans-serif;transition:background .15s,color .15s}
+.ptab:last-child{border-right:none}
+.ptab.active{background:var(--charcoal);color:var(--warm-white)}
+.ptab:hover:not(.active){background:rgba(28,26,23,.05)}
+.price-panel{display:none}
+.price-panel.active{display:block}
+.price-rows{border:0.5px solid var(--border);background:var(--warm-white)}
+.price-row{display:grid;grid-template-columns:2fr 1.5fr 1fr;padding:1.25rem 1.5rem;border-bottom:0.5px solid var(--border);align-items:center;gap:1rem}
+.price-row:last-child{border-bottom:none}
+.price-row-head{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--light);background:var(--cream)}
+.price-row-name{font-size:14px;color:var(--charcoal)}
+.price-row-includes{font-size:13px;color:var(--mid)}
+.price-row-amount{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--charcoal);text-align:right}
+.price-notes{margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:8px}
+.price-note-pill{font-size:11px;color:var(--mid);background:var(--warm-white);border:0.5px solid var(--border);padding:5px 12px}
+#hairandmakeup{background:var(--warm-white);border-top:0.5px solid var(--border)}
+.hm-grid{display:grid;grid-template-columns:1fr 1fr;border:0.5px solid var(--border);margin-top:3rem}
+.hm-col{padding:2rem;border-right:0.5px solid var(--border)}
+.hm-col:last-child{border-right:none}
+.hm-col-title{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:0.5px solid var(--border)}
+.hm-shop{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 0;border-bottom:0.5px solid var(--border);gap:1rem}
+.hm-shop:last-child{border-bottom:none}
+.hm-shop-name{font-size:14px;color:var(--charcoal)}
+.hm-shop-meta{font-size:12px;color:var(--light);margin-top:2px}
+.hm-shop-price{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--charcoal);white-space:nowrap}
+.hm-badge{display:inline-block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;background:var(--accent-light);color:#7A5230;margin-top:4px}
+#howitworks{background:var(--cream);border-top:0.5px solid var(--border)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);border:0.5px solid var(--border);margin-top:3rem;background:var(--warm-white)}
+.step{padding:2rem 1.5rem;border-right:0.5px solid var(--border)}
+.step:last-child{border-right:none}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--accent);margin-bottom:1rem;letter-spacing:.06em}
+.step-title{font-size:13px;font-weight:500;color:var(--charcoal);margin-bottom:.5rem;letter-spacing:.04em;text-transform:uppercase}
+.step-desc{font-size:13px;color:var(--mid);line-height:1.6}
+#concepts{background:var(--warm-white);border-top:0.5px solid var(--border)}
+.concepts-grid{display:grid;grid-template-columns:repeat(4,1fr);border:0.5px solid var(--border);margin-top:3rem}
+.concept-card{padding:2rem;border-right:0.5px solid var(--border)}
+.concept-card:last-child{border-right:none}
+.concept-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--accent-light);line-height:1;margin-bottom:1rem}
+.concept-name{font-size:13px;font-weight:500;color:var(--charcoal);margin-bottom:.5rem;letter-spacing:.04em;text-transform:uppercase}
+.concept-desc{font-size:13px;color:var(--mid);line-height:1.6}
+#policies{background:var(--cream);border-top:0.5px solid var(--border)}
+.policy-grid{display:grid;grid-template-columns:1fr 1fr 1fr;border:0.5px solid var(--border);margin-top:3rem}
+.policy-col{padding:2rem;border-right:0.5px solid var(--border)}
+.policy-col:last-child{border-right:none}
+.policy-col-title{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:0.5px solid var(--border)}
+.policy-row{display:flex;justify-content:space-between;gap:1rem;padding:10px 0;border-bottom:0.5px solid var(--border);font-size:13px}
+.policy-row:last-child{border-bottom:none}
+.policy-cond{color:var(--mid)}
+.policy-result{font-weight:500;color:var(--charcoal);text-align:right;white-space:nowrap}
+#faq{background:var(--warm-white);border-top:0.5px solid var(--border)}
+.faq-cat{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin:2.5rem 0 .75rem;padding-top:1.5rem;border-top:0.5px solid var(--border)}
+.faq-list{margin-top:2rem}
+.faq-item{border:0.5px solid var(--border);border-top:none;background:var(--warm-white)}
+.faq-item:first-of-type{border-top:0.5px solid var(--border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 1.5rem;cursor:pointer;gap:1rem}
+.faq-q-text{font-size:14px;color:var(--charcoal)}
+.faq-icon{width:20px;height:20px;flex-shrink:0;border:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--mid);transition:transform .2s;border-radius:50%}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:1.25rem 1.5rem;font-size:14px;color:var(--mid);line-height:1.8;border-top:0.5px solid var(--border)}
+.faq-item.open .faq-a{display:block}
+.faq-a ul{padding-left:18px;margin:6px 0}
+.faq-a li{margin-bottom:4px}
+.faq-a strong{color:var(--charcoal);font-weight:500}
+.faq-table{width:100%;border-collapse:collapse;margin:10px 0 4px;font-size:13px}
+.faq-table th{text-align:left;color:var(--mid);font-weight:500;padding:4px 8px 4px 0;border-bottom:0.5px solid var(--border)}
+.faq-table td{padding:5px 8px 5px 0;color:var(--charcoal)}
+.faq-table tr:not(:last-child) td{border-bottom:0.5px solid var(--border)}
+#contact{background:var(--charcoal);border-top:0.5px solid rgba(255,255,255,.08)}
+#contact .section-label{color:var(--accent)}
+#contact .section-title{color:var(--warm-white)}
+#contact .section-body{color:rgba(255,255,255,.5)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
+.contact-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.contact-value{font-size:15px;color:rgba(255,255,255,.8);margin-bottom:1.5rem;line-height:1.6}
+.contact-value a{color:rgba(255,255,255,.8);text-decoration:none}
+.contact-value a:hover{color:var(--accent)}
+.contact-cta{display:inline-block;background:var(--accent);color:var(--warm-white);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 36px;margin-top:1rem;transition:opacity .2s}
+.contact-cta:hover{opacity:.85}
+.info-box{border:0.5px solid rgba(255,255,255,.1);padding:2rem}
+.info-box-title{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem}
+.info-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:0.5px solid rgba(255,255,255,.06);font-size:13px}
+.info-row:last-child{border-bottom:none}
+.info-label{color:rgba(255,255,255,.4)}
+.info-val{color:rgba(255,255,255,.75);text-align:right;max-width:220px}
+footer{background:var(--charcoal);border-top:0.5px solid rgba(255,255,255,.08);padding:2rem 5rem;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none}
+.footer-right{font-size:12px;color:rgba(255,255,255,.25)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){
+  nav{padding:0 1.5rem}.nav-links{display:none}
+  .hero{grid-template-columns:1fr}.hero-text{padding:4rem 2rem;border-right:none}.hero-image{height:50vw}
+  section{padding:4rem 2rem}
+  .services-grid,.steps,.concepts-grid{grid-template-columns:1fr}
+  .service-card,.step,.concept-card{border-right:none;border-bottom:0.5px solid var(--border)}
+  .hm-grid,.policy-grid,.contact-grid{grid-template-columns:1fr}
+  .hm-col,.policy-col{border-right:none;border-bottom:0.5px solid var(--border)}
+  .price-row{grid-template-columns:1fr 1fr}.price-row-includes{display:none}
+  footer{padding:1.5rem 2rem;flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Octobee Studio</a>
+  <ul class="nav-links">
+    <li><a href="#concepts">Concepts</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#howitworks">How it works</a></li>
+    <li><a href="#hairandmakeup">Hair &amp; Makeup</a></li>
+    <li><a href="#policies">Policies</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section style="padding:0" id="home">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Seoul · Sinsa-dong, Gangnam</p>
+      <h1 class="hero-title">Premium Portraits<br><em>Capturing Natural & Timeless Beauty</em></h1>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#contact" class="btn-primary">Book now</a>
+        <a href="#pricing" class="btn-outline">View pricing</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="img-placeholder" style="background:#EDE8DF">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="9" stroke="#B8B2A8" stroke-width="1"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#B8B2A8" stroke-width="1" stroke-linecap="round"/></svg>
+        <span class="img-tag">Individual</span>
+      </div>
+      <div class="img-placeholder" style="background:#E8E2D8">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="18" cy="18" r="7" stroke="#B8B2A8" stroke-width="1"/><circle cx="30" cy="18" r="7" stroke="#B8B2A8" stroke-width="1"/><path d="M2 42c0-8.837 7.163-16 16-16m28 16c0-8.837-7.163-16-16-16" stroke="#B8B2A8" stroke-width="1" stroke-linecap="round"/></svg>
+        <span class="img-tag">Group &amp; couples</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item">Individual profile</span><span class="strip-dot"></span>
+    <span class="strip-item">Group &amp; couples</span><span class="strip-dot"></span>
+    <span class="strip-item">Professional &amp; LinkedIn</span><span class="strip-dot"></span>
+    <span class="strip-item">ID &amp; passport photos</span><span class="strip-dot"></span>
+    <span class="strip-item">Affiliated H&amp;M at discount</span><span class="strip-dot"></span>
+    <span class="strip-item">Free outfit rental</span><span class="strip-dot"></span>
+    <span class="strip-item">Express retouching</span><span class="strip-dot"></span>
+    <span class="strip-item">Individual profile</span><span class="strip-dot"></span>
+    <span class="strip-item">Group &amp; couples</span><span class="strip-dot"></span>
+    <span class="strip-item">Professional &amp; LinkedIn</span><span class="strip-dot"></span>
+    <span class="strip-item">ID &amp; passport photos</span><span class="strip-dot"></span>
+    <span class="strip-item">Affiliated H&amp;M at discount</span><span class="strip-dot"></span>
+    <span class="strip-item">Free outfit rental</span><span class="strip-dot"></span>
+    <span class="strip-item">Express retouching</span><span class="strip-dot"></span>
+  </div>
+</div>
+
+<section id="concepts">
+  <div class="reveal">
+    <p class="section-label">Signature looks</p>
+    <h2 class="section-title">Our most popular concepts</h2>
+    <p class="section-body">Browse our Instagram @octobee_film to find your favourite — or let our photographer recommend something on the day. Custom concepts are always welcome.</p>
+  </div>
+  <div class="concepts-grid reveal">
+    <div class="concept-card">
+      <div class="concept-num">01</div>
+      <div class="img-placeholder" style="background:#EDE8DF">
+        <svg width="48" height="180" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="9" stroke="#B8B2A8" stroke-width="1"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#B8B2A8" stroke-width="1" stroke-linecap="round"/></svg>
+      </div>
+      <p class="concept-name">Sunset vibe</p>
+      <p class="concept-desc">Warm amber tones with soft, golden-hour lighting. One of our most-requested looks.</p>
+    </div>
+    <div class="concept-card">
+      <div class="concept-num">02</div>
+      <div class="img-placeholder" style="background:#EDE8DF">
+        <svg width="48" height="180" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="9" stroke="#B8B2A8" stroke-width="1"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#B8B2A8" stroke-width="1" stroke-linecap="round"/></svg>
+      </div>
+      <p class="concept-name">Dark mood</p>
+      <p class="concept-desc">Cold, dramatic lighting with no background paper — pure atmosphere created through light alone.</p>
+    </div>
+    <div class="concept-card">
+      <div class="concept-num">03</div>
+      <div class="img-placeholder" style="background:#EDE8DF">
+        <svg width="48" height="180" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="9" stroke="#B8B2A8" stroke-width="1"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#B8B2A8" stroke-width="1" stroke-linecap="round"/></svg>
+      </div>
+      <p class="concept-name">Natural light</p>
+      <p class="concept-desc">Clean, airy, and timeless. Works equally well for personal portfolios and professional use.</p>
+    </div>
+    <div class="concept-card">
+      <div class="concept-num">04</div>
+      <div class="img-placeholder" style="background:#EDE8DF">
+        <svg width="48" height="180" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="9" stroke="#B8B2A8" stroke-width="1"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#B8B2A8" stroke-width="1" stroke-linecap="round"/></svg>
+      </div>
+      <p class="concept-name">Beauty &amp; urban chic</p>
+      <p class="concept-desc">Close-up beauty shots, actor profiles, and editorial urban styles for more polished looks.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="reveal">
+    <p class="section-label">Transparent pricing</p>
+    <h2 class="section-title">Simple, honest packages</h2>
+    <p class="section-body">All prices are in Korean won and exclude hair &amp; makeup. Credit card payments at the studio carry 10% VAT — we recommend cash or WISE for the balance.</p>
+  </div>
+  <div class="reveal">
+    <div class="pricing-tabs">
+      <button class="ptab active" onclick="showTab('individual',this)">Individual</button>
+      <button class="ptab" onclick="showTab('group',this)">Group</button>
+      <button class="ptab" onclick="showTab('addons',this)">Add-ons</button>
+      <button class="ptab" onclick="showTab('idphoto',this)">ID photo</button>
+    </div>
+    <div id="individual" class="price-panel active">
+      <div class="price-rows">
+        <div class="price-row price-row-head"><span>Package</span><span>Includes</span><span style="text-align:right">Price (KRW)</span></div>
+        <div class="price-row"><span class="price-row-name">1 concept</span><span class="price-row-includes">1 outfit · 3 edited photos</span><span class="price-row-amount">250,000</span></div>
+        <div class="price-row"><span class="price-row-name">2 concepts</span><span class="price-row-includes">2 outfits · 7 edited photos</span><span class="price-row-amount">430,000</span></div>
+        <div class="price-row"><span class="price-row-name">3 concepts</span><span class="price-row-includes">3 outfits · 11 edited photos</span><span class="price-row-amount">610,000</span></div>
+        <div class="price-row"><span class="price-row-name">4 concepts</span><span class="price-row-includes">4 outfits · 15 edited photos</span><span class="price-row-amount">780,000</span></div>
+        <div class="price-row"><span class="price-row-name">5 concepts</span><span class="price-row-includes">5 outfits · 19 edited photos</span><span class="price-row-amount">950,000</span></div>
+      </div>
+      <div class="price-notes">
+        <span class="price-note-pill">~20–30 min per concept</span>
+        <span class="price-note-pill">100–200 photos shot per concept</span>
+        <span class="price-note-pill">Free outfit rental included</span>
+        <span class="price-note-pill">6+ concepts — contact us</span>
+      </div>
+    </div>
+    <div id="group" class="price-panel">
+      <div class="price-rows">
+        <div class="price-row price-row-head"><span>Group size</span><span>1 concept</span><span style="text-align:right">2 concepts</span></div>
+        <div class="price-row"><span class="price-row-name">2 people</span><span class="price-row-includes">370,000 won</span><span class="price-row-amount">610,000</span></div>
+        <div class="price-row"><span class="price-row-name">3 people</span><span class="price-row-includes">450,000 won</span><span class="price-row-amount">690,000</span></div>
+        <div class="price-row"><span class="price-row-name">4 people</span><span class="price-row-includes">530,000 won</span><span class="price-row-amount">770,000</span></div>
+        <div class="price-row"><span class="price-row-name">5 people</span><span class="price-row-includes">610,000 won</span><span class="price-row-amount">850,000</span></div>
+        <div class="price-row"><span class="price-row-name">10+ people</span><span class="price-row-includes">Contact us</span><span class="price-row-amount">—</span></div>
+      </div>
+      <div class="price-notes">
+        <span class="price-note-pill">+80,000 won per additional person</span>
+        <span class="price-note-pill">Mix individual + group concepts in one booking</span>
+        <span class="price-note-pill">3-concept rates available on request</span>
+      </div>
+    </div>
+    <div id="addons" class="price-panel">
+      <div class="price-rows">
+        <div class="price-row price-row-head"><span>Add-on</span><span>Details</span><span style="text-align:right">Price</span></div>
+        <div class="price-row"><span class="price-row-name">HD original files</span><span class="price-row-includes">Full resolution, unedited</span><span class="price-row-amount">50,000 / concept</span></div>
+        <div class="price-row"><span class="price-row-name">Express retouching</span><span class="price-row-includes">Delivered within 3 days</span><span class="price-row-amount">50,000 / concept</span></div>
+        <div class="price-row"><span class="price-row-name">Extra retouching</span><span class="price-row-includes">Per additional photo beyond package</span><span class="price-row-amount">50,000 / photo</span></div>
+        <div class="price-row"><span class="price-row-name">Photo print</span><span class="price-row-includes">10 × 15 cm sheet</span><span class="price-row-amount">10,000 / sheet</span></div>
+      </div>
+    </div>
+    <div id="idphoto" class="price-panel">
+      <div class="price-rows">
+        <div class="price-row price-row-head"><span>Option</span><span>Details</span><span style="text-align:right">Price</span></div>
+        <div class="price-row"><span class="price-row-name">With profile shoot</span><span class="price-row-includes">Discounted · fully prepaid at reservation</span><span class="price-row-amount">55,000</span></div>
+        <div class="price-row"><span class="price-row-name">Standalone</span><span class="price-row-includes">Original price · fully prepaid</span><span class="price-row-amount">90,000</span></div>
+      </div>
+      <div class="price-notes">
+        <span class="price-note-pill">~10 min total time</span>
+        <span class="price-note-pill">1 retouched photo delivered by email / AirDrop</span>
+        <span class="price-note-pill">1 free print sheet (6–8 passport-size, 3.5×4.5 cm)</span>
+        <span class="price-note-pill">Additional prints: 10,000 won per sheet</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="howitworks">
+  <div class="reveal">
+    <p class="section-label">The process</p>
+    <h2 class="section-title">From booking to<br>beautiful photos</h2>
+  </div>
+  <div class="steps reveal">
+    <div class="step"><p class="step-num">Step 01</p><p class="step-title">Contact us</p><p class="step-desc">Send 3–4 preferred dates, group size, and number of concepts. We reply with available time slots.</p></div>
+    <div class="step"><p class="step-num">Step 02</p><p class="step-title">Pay deposit</p><p class="step-desc">Pay via PayPal, WISE, or bank transfer. Your slot is confirmed only upon receipt of the deposit.</p></div>
+    <div class="step"><p class="step-num">Step 03</p><p class="step-title">Hair &amp; makeup</p><p class="step-desc">Visit your chosen affiliated shop — we book it on your behalf. Arrive fresh-faced with no prior makeup.</p></div>
+    <div class="step"><p class="step-num">Step 04</p><p class="step-title">Photoshoot</p><p class="step-desc">Choose outfits, shoot each concept (20–30 min each), then select your favourite photos for retouching.</p></div>
+    <div class="step"><p class="step-num">Step 05</p><p class="step-title">Receive photos</p><p class="step-desc">Retouched photos arrive by email within ~15 days. Express delivery within 3 days available as an add-on.</p></div>
+  </div>
+</section>
+
+<section id="hairandmakeup">
+  <div class="reveal">
+    <p class="section-label">Affiliated partners</p>
+    <h2 class="section-title">Hair &amp; makeup,<br>arranged for you</h2>
+    <p class="section-body">We work with five top studios in Sinsa and Cheongdam at exclusive affiliated rates. Tell us your preference and we book on your behalf — no extra effort needed.</p>
+  </div>
+  <div class="hm-grid reveal">
+    <div class="hm-col">
+      <p class="hm-col-title">Women's hair &amp; makeup</p>
+      <div class="hm-shop"><div><p class="hm-shop-name">SHEJAC</p><p class="hm-shop-meta">Sinsa · 1 min walk</p><span class="hm-badge">Best value</span></div><span class="hm-shop-price">180,000</span></div>
+      <div class="hm-shop"><div><p class="hm-shop-name">S.TOB</p><p class="hm-shop-meta">Sinsa · ~7–8 min taxi</p></div><span class="hm-shop-price">235,000</span></div>
+      <div class="hm-shop"><div><p class="hm-shop-name">SHINOKI SAENAL</p><p class="hm-shop-meta">Sinsa · 1–2 min walk</p></div><span class="hm-shop-price">250,000</span></div>
+      <div class="hm-shop"><div><p class="hm-shop-name">A-BY-BOM</p><p class="hm-shop-meta">Cheongdam · ~8 min taxi</p><span class="hm-badge">Top tier</span></div><span class="hm-shop-price">390,000</span></div>
+      <div class="hm-shop"><div><p class="hm-shop-name">Yoning</p><p class="hm-shop-meta">Cheongdam · ~10 min taxi</p><span class="hm-badge">Top tier</span></div><span class="hm-shop-price">390,000</span></div>
+    </div>
+    <div class="hm-col">
+      <p class="hm-col-title">Men's hair &amp; makeup</p>
+      <div class="hm-shop"><div><p class="hm-shop-name">SHEJAC</p><p class="hm-shop-meta">Sinsa · 1 min walk</p><span class="hm-badge">Best value</span></div><span class="hm-shop-price">130,000</span></div>
+      <div class="hm-shop"><div><p class="hm-shop-name">S.TOB</p><p class="hm-shop-meta">Sinsa · ~7–8 min taxi</p></div><span class="hm-shop-price">160,000</span></div>
+      <div class="hm-shop"><div><p class="hm-shop-name">SHINOKI SAENAL</p><p class="hm-shop-meta">Sinsa · 1–2 min walk</p></div><span class="hm-shop-price">160,000</span></div>
+      <div class="hm-shop"><div><p class="hm-shop-name">A-BY-BOM</p><p class="hm-shop-meta">Cheongdam · ~8 min taxi</p></div><span class="hm-shop-price">290,000</span></div>
+      <div class="hm-shop"><div><p class="hm-shop-name">Yoning</p><p class="hm-shop-meta">Cheongdam · ~10 min taxi</p><span class="hm-badge">Top tier</span></div><span class="hm-shop-price">300,000</span></div>
+      <p style="font-size:12px;color:var(--light);margin-top:1.25rem;line-height:1.6">Up-style hair adds 20,000–33,000 won. Early start surcharges apply before normal opening hours — see FAQ for full schedule.</p>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem;padding:1.75rem 2rem;background:var(--cream);border:0.5px solid var(--border)" class="reveal">
+    <p style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem">Early start fees</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem;font-size:12px;color:var(--mid)">
+      <div><p style="font-weight:500;color:var(--charcoal);margin-bottom:.4rem">SHEJAC</p>08:00 — no fee (normal)<br>07:00 — +20,000 won<br>06:00 — +30,000 won</div>
+      <div><p style="font-weight:500;color:var(--charcoal);margin-bottom:.4rem">SHINOKI SAENAL</p>10:00 — no fee (normal)<br>09:00 — +10,000 won<br>08:00 — +20,000 won<br>07:00 — +30,000 won</div>
+      <div><p style="font-weight:500;color:var(--charcoal);margin-bottom:.4rem">S.TOB</p>10:00 — no fee (normal)<br>09:00 — +22,000 won<br>08:00 — +44,000 won<br>07:00 — +66,000 won</div>
+      <div><p style="font-weight:500;color:var(--charcoal);margin-bottom:.4rem">Yoning</p>09:00 — no fee (normal)<br>08:00 — +33,000 won<br>07:00 — +55,000 won</div>
+      <div><p style="font-weight:500;color:var(--charcoal);margin-bottom:.4rem">A-BY-BOM</p>10:00 — no fee (normal)<br>09:00 — +11,000 won<br>08:00 — +33,000 won<br>07:00 — +55,000 won</div>
+    </div>
+  </div>
+</section>
+
+<section id="policies">
+  <div class="reveal">
+    <p class="section-label">Booking policies</p>
+    <h2 class="section-title">Clear terms,<br>no surprises</h2>
+  </div>
+  <div class="policy-grid reveal">
+    <div class="policy-col">
+      <p class="policy-col-title">Rescheduling</p>
+      <div class="policy-row"><span class="policy-cond">15+ days before</span><span class="policy-result">Free (once)</span></div>
+      <div class="policy-row"><span class="policy-cond">14–2 days before</span><span class="policy-result">+30,000 won fee</span></div>
+      <div class="policy-row"><span class="policy-cond">1 day / same day</span><span class="policy-result">Not allowed</span></div>
+      <div class="policy-row"><span class="policy-cond">After any reschedule</span><span class="policy-result">No refund</span></div>
+    </div>
+    <div class="policy-col">
+      <p class="policy-col-title">Cancellations</p>
+      <div class="policy-row"><span class="policy-cond">60+ days before</span><span class="policy-result">100% refund</span></div>
+      <div class="policy-row"><span class="policy-cond">60–31 days before</span><span class="policy-result">70% refund</span></div>
+      <div class="policy-row"><span class="policy-cond">30–15 days before</span><span class="policy-result">50% refund</span></div>
+      <div class="policy-row"><span class="policy-cond">Within 14 days</span><span class="policy-result">No refund</span></div>
+    </div>
+    <div class="policy-col">
+      <p class="policy-col-title">Other rules</p>
+      <div class="policy-row"><span class="policy-cond">No-show threshold</span><span class="policy-result">30 min late</span></div>
+      <div class="policy-row"><span class="policy-cond">Deposit deadline</span><span class="policy-result">Within 1 hour</span></div>
+      <div class="policy-row"><span class="policy-cond">Photo download period</span><span class="policy-result">30 days from delivery</span></div>
+      <div class="policy-row"><span class="policy-cond">H&amp;M change on the day</span><span class="policy-result">Not permitted</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="reveal">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Common questions</h2>
+    <p class="section-body">Everything you need to know before reaching out to us — built from real client conversations.</p>
+  </div>
+  <div class="faq-list reveal">
+
+    <p class="faq-cat" style="margin-top:0;border-top:none">Booking &amp; reservations</p>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">How do I make a reservation?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Contact us via Instagram or WhatsApp with 3–4 preferred dates, the number of people, and the number of concepts you want. We will reply with available time slots. Your booking is only confirmed once the reservation fee is received — please send payment promptly as slots fill up in real time.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Do I need to decide the number of concepts before booking?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — we allocate studio time based on concept count, so this must be confirmed when booking. You can add more concepts later if you contact us before the shoot and we adjust your time slot. Most clients who get professional hair &amp; makeup take 2–4 concepts to make the most of the experience.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">What is a "concept"?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">One concept = one outfit + one lighting and backdrop setting. Each concept takes 20–30 minutes, during which 100–200 photos are captured. After the shoot, you select which photos you want retouched.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Can I book the photoshoot first and add hair &amp; makeup later?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes. If you are undecided about H&amp;M, you can book the photoshoot first. However, we recommend confirming H&amp;M at the same time, as our affiliated shops also fill up quickly and we need to book them on your behalf.</div>
+    </div>
+
+    <p class="faq-cat">Payment &amp; fees</p>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">How do I pay the reservation deposit?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">
+        We accept: <strong>PayPal</strong> (use "Friends &amp; Family" to minimize fees), <strong>WISE</strong> (recommended), <strong>KEB Hana bank transfer</strong> (+10,000 won for overseas transfers), and <strong>AliPay</strong> (+11.5% surcharge). Direct credit card payments are not accepted for deposits, but you can link a card to PayPal or WISE.<br><br>
+        Please notify us immediately after payment and include the depositor's name.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">How much is the reservation deposit?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">
+        <table class="faq-table">
+          <tr><th>Item</th><th>Via PayPal</th><th>Via WISE / Bank</th></tr>
+          <tr><td>Hair &amp; makeup (per person)</td><td>90–150 USD</td><td>130,000–190,000 won</td></tr>
+          <tr><td>Photoshoot (per concept)</td><td>80 USD</td><td>100,000 won</td></tr>
+        </table>
+        The exact amount varies by H&amp;M shop. We will confirm the total when finalizing your booking. The deposit is fully deducted from your balance.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">How do I pay the remaining balance on the day?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">The balance is split: the H&amp;M balance is paid directly to the hair and makeup shop, and the photoshoot balance is paid at OCTOBEE STUDIO. We recommend <strong>cash or WISE</strong> — credit card payments at the studio add 10% VAT. We tell you the exact balances after receiving your deposit.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Can multiple people in a group pay separately?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes. Group members can each pay their own portion via PayPal or WISE. Just make sure each person sends their depositor name to us right away after paying.</div>
+    </div>
+
+    <p class="faq-cat">Hair &amp; makeup</p>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Is hair &amp; makeup included in the photoshoot price?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">No — it is a separate service booked at an affiliated shop. We handle the reservation on your behalf at a discounted rate. If you are unsure which shop suits your style and budget, we are happy to recommend one.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Can I skip hair &amp; makeup and do my own?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes, it is optional. That said, we strongly recommend professional H&amp;M — the quality of hair and makeup has a significant impact on the final photos. If you decide to do your own, just let us know when booking so we do not reserve an H&amp;M slot for you.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Can I get makeup only, without hair styling?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes, makeup-only is available at most shops. Please specify this when booking — shops prepare in advance and once booked as full hair &amp; makeup, it cannot be changed to makeup-only (or hair-only) on the day of the appointment.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Can members of a group each choose a different H&amp;M shop?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes. Each person can choose a different affiliated shop. We coordinate all the reservations so everyone arrives at the studio at the same time.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Are there early start fees?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — shops charge a surcharge for starts before their normal opening time. SHEJAC opens at 8:00 AM (no early fee). SHINOKI SAENAL and S.TOB open at 10:00 AM. Yoning at 9:00 AM, A-BY-BOM at 10:00 AM. We display the full early start fee schedule in the Hair &amp; Makeup section above, and will tell you the exact surcharge when confirming your booking.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Do the H&amp;M artists speak English?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — all our affiliated shops regularly serve international clients and can communicate in English. Bringing a reference photo to show the artist on the day is always recommended.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">How should I prepare before going to the H&amp;M shop?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">
+        <ul>
+          <li>Arrive with clean skin and basic skincare only — no makeup. Sunscreen is fine.</li>
+          <li>Shampoo your hair at home beforehand — shampoo at the shop is an extra charge and takes more time.</li>
+          <li>Do not style your hair before arriving.</li>
+          <li>Bring reference photos of your desired look to show the artist.</li>
+          <li>Arrive on time — late arrivals may be treated as a no-show.</li>
+          <li>When arriving at the shop, mention you are going to OCTOBEE STUDIO to receive the affiliated discount.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="faq-cat">At the studio</p>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Where is OCTOBEE STUDIO?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">518-16 B1, Sinsa-dong, Gangnam-gu, Seoul. A 3-minute walk from Exit 8 of Sinsa Station (Line 3 / Sinbundang Line), next to Garosu-gil.<br><br>Search "OCTOBEE STUDIO" or "옥토비스튜디오" on Google Maps, Naver Map, or Kakao Map. <a href="https://maps.app.goo.gl/MEU8xtjZY42gHFTGA" style="color:var(--accent)">View on Google Maps →</a><br><br>Traffic in Gangnam can be heavy. Please depart at least 30 minutes earlier than expected.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">What happens on the day of the shoot?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a"><strong>Arrive → Outfit change → Photoshoot → Photo selection → Payment → Check-out.</strong><br><br>Each concept takes 20–30 minutes with 100–200 photos captured. After shooting, we give you time to select which photos to retouch. Please arrive 5–10 minutes early — lateness reduces your shooting and selection time.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Are outfits provided?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — we have a large selection of rental outfits in various sizes, including casual, professional, and editorial styles (shirts, blazers, and more), all free to rent. You are also welcome to bring your own clothes. Our photographer can recommend outfits that suit your look.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Do I need to choose a concept in advance?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">No — you can choose on the day and our photographer will recommend options based on your style. Browsing our Instagram (@octobee_film) in advance and saving reference photos is encouraged but not required.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Can I bring a companion?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes. Please let us know in advance if anyone accompanying you will not be photographed, as space is limited. They are welcome to watch and take behind-the-scenes photos.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Do you offer professional or LinkedIn-style photos?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — business upper-body portraits are available. The studio has shirts and blazers to rent. Let us know your purpose when booking and our photographer will set up accordingly.</div>
+    </div>
+
+    <p class="faq-cat">Photos &amp; delivery</p>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">When will I receive my photos?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Retouched photos are sent to your email within approximately 15 days, processed in order of shoot dates. For faster delivery, the <strong>express retouching add-on</strong> (50,000 won per concept) guarantees delivery within 3 days.<br><br>Photos are sent in a password-protected ZIP file — we send the password separately. Please download within 30 days as the link expires after that.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">How many edited photos do I receive?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">1 concept = 3 photos · 2 concepts = 7 photos · 3 concepts = 11 photos · 4 concepts = 15 photos · 5 concepts = 19 photos.<br><br>You choose which photos to retouch after the shoot. Additional retouching beyond your package is 50,000 won per extra photo.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)"><span class="faq-q-text">Can I get the original, unedited files?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — full HD original files are available as an add-on for 50,000 won per concept. You can decide after the shoot whether you want them; no commitment required in advance.</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="reveal">
+    <p class="section-label">Get in touch</p>
+    <h2 class="section-title">Ready to book?</h2>
+    <p class="section-body">Message us on Instagram with your preferred dates, group size, and number of concepts — we will get back to you quickly.</p>
+  </div>
+  <div class="contact-grid reveal">
+    <div>
+      <p class="contact-label">Instagram</p>
+      <p class="contact-value"><a href="https://www.instagram.com/octobee_film" target="_blank">@octobee_film</a></p>
+      <p class="contact-label">Address</p>
+      <p class="contact-value">518-16 B1, Sinsa-dong<br>Gangnam-gu, Seoul<br>Exit 8, Sinsa Station (Line 3 / Sinbundang)</p>
+      <p class="contact-label">Google Maps</p>
+      <p class="contact-value"><a href="https://maps.app.goo.gl/MEU8xtjZY42gHFTGA" target="_blank">View directions →</a></p>
+      <a href="https://www.instagram.com/octobee_film" class="contact-cta" target="_blank">Message us on Instagram</a>
+    </div>
+    <div class="info-box">
+      <p class="info-box-title">Quick reference</p>
+      <div class="info-row"><span class="info-label">Studio hours</span><span class="info-val">Approx. 8 AM – 9 PM (appointment only)</span></div>
+      <div class="info-row"><span class="info-label">Languages</span><span class="info-val">Korean, English</span></div>
+      <div class="info-row"><span class="info-label">Deposit methods</span><span class="info-val">PayPal · WISE · Bank transfer · AliPay</span></div>
+      <div class="info-row"><span class="info-label">Balance payment</span><span class="info-val">Cash · WISE · Credit card (+10% VAT)</span></div>
+      <div class="info-row"><span class="info-label">Photo delivery</span><span class="info-val">~15 days · Express: 3 days (+50,000 won/concept)</span></div>
+      <div class="info-row"><span class="info-label">Download period</span><span class="info-val">30 days from delivery</span></div>
+      <div class="info-row"><span class="info-label">Group size</span><span class="info-val">1 – 10+ people</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="footer-logo">Octobee Studio</a>
+  <p class="footer-right">518-16 B1, Sinsa-dong, Gangnam-gu, Seoul · @octobee_film</p>
+</footer>
+
+<script>
+function showTab(id,btn){document.querySelectorAll('.price-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active')}
+function toggle(btn){btn.parentElement.classList.toggle('open')}
+const obs=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
